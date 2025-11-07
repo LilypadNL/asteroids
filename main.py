@@ -1,6 +1,8 @@
 import pygame
 from constants import *
 from logger import log_state
+from player import Player
+
 
 def main():
     pygame.init()
@@ -12,7 +14,9 @@ def main():
     #Game clock
     game_clock = pygame.time.Clock()
     dt = 0
-
+    
+    #Initiate Player object
+    Player_sprite = Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, PLAYER_RADIUS)
 
 
     #Game loop
@@ -23,9 +27,12 @@ def main():
             if event.type == pygame.QUIT:
                 return
         pygame.Surface.fill(screen, BLACK)
+        Player_sprite.draw(screen)
         pygame.display.flip()
-        dt = game_clock.tick(59)
+        dt = game_clock.tick(60)
         dt = dt/1000
+
+
 
 
 
