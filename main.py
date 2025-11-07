@@ -8,8 +8,15 @@ def main():
     print("Starting Asteroids!")
     print(f"Screen width: {SCREEN_WIDTH}")
     print(f"Screen height: {SCREEN_HEIGHT}")
-    running = True
+    
+    #Game clock
+    game_clock = pygame.time.Clock()
+    dt = 0
 
+
+
+    #Game loop
+    running = True
     while running:
         log_state()
         for event in pygame.event.get():
@@ -17,6 +24,11 @@ def main():
                 return
         pygame.Surface.fill(screen, BLACK)
         pygame.display.flip()
+        dt = game_clock.tick(59)
+        dt = dt/1000
+
+
+
 
 if __name__ == "__main__":
     main()
