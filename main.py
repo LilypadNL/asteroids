@@ -2,7 +2,8 @@ import pygame
 from constants import *
 from logger import log_state
 from player import Player
-
+from asteroidfield import AsteroidField
+from asteroid import Asteroid
 
 def main():
     pygame.init()
@@ -17,13 +18,15 @@ def main():
     
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
+    asteroids = pygame.sprite.Group()
     Player.containers = (updatable, drawable)
+    Asteroid.containers = (updatable, drawable, asteroids)
+    AsteroidField.containers = (updatable)
 
     #Initiate Player object
     Player_sprite = Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, PLAYER_RADIUS)   
-      
-    print(f"drawable: {drawable.has()}")
-    print(f"updatable: {updatable.has()}")
+    AsteroidField_sprite = AsteroidField()
+
 
     #Game loop
     running = True
